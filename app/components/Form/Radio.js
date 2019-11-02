@@ -1,6 +1,13 @@
 import { Radio as BaseRadio } from 'antd';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { theme as themeConst } from 'utils/constants';
 
+const fadeInAnimation = keyframes`
+    to {
+      background-color: ${themeConst.color.tosca};
+      color: ${themeConst.color.white};
+    }
+`;
 const Radio = styled(BaseRadio)`
   && {
     border: ${({ theme }) => `1px ${theme.color.tosca} solid`};
@@ -10,15 +17,26 @@ const Radio = styled(BaseRadio)`
     color: ${({ theme }) => theme.color.black};
 
     &.ant-radio-wrapper-checked {
-      background-color: ${({ theme }) => theme.color.tosca};
-      color: ${({ theme }) => theme.color.white};
+      animation: ${fadeInAnimation} 1s forwards;
     }
 
     .ant-radio-inner {
+      width: 18px;
+      height: 18px;
       border-color: ${({ theme }) => theme.color.tosca};
     }
-    .ant-radio-checked .ant-radio-inner::after {
+    .ant-radio-inner::after {
       background-color: ${({ theme }) => theme.color.tosca};
+      top: 2px;
+      left: 2px;
+      width: 12px;
+      height: 12px;
+      border-radius: 12px;
+      color: ${({ theme }) => theme.color.white};
+      font-size: 12px;
+      text-align: center;
+      line-height: 12px;
+      content: '\\2714';
     }
   }
 `;
