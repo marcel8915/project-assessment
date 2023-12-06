@@ -56,7 +56,7 @@ public class HeaderMegaMenuModel {
 
 	private void processMenuList() {
 		Resource rootPageRes = resourceResolver.getResource(rootPath);
-		ValueMap vMap = rootPageRes.getValueMap();
+		ValueMap vMap = rootPageRes.getChild(JcrConstants.JCR_CONTENT).getValueMap();
 		navLevel = Integer.parseInt(vMap.getOrDefault("navLevel", DEFAULT_NAV_LEVEL).toString());
 		menu = getChildPage(rootPageRes, 1);
 	}
@@ -75,11 +75,7 @@ public class HeaderMegaMenuModel {
 				String pageLink = externalizer.absoluteLink(request, request.getScheme(), pagePath).concat(".html");
 				boolean isHideInNav = Boolean.parseBoolean(vMap.get("hideInNav", "false"));
 				boolean isHideChildInNav = Boolean.parseBoolean(vMap.get("hideChildInNav", "false"));
-				boolean isCurrentPage = false;
-				
-				if (pageLevel == 1 && currentPage.getPath().startsWith(pagePath)) {
-					isCurrentPage = true;
-				}
+				boolean isCurrentPage = pageLevel == 1 && currentPage.getPath().startsWith(pagePath);
 
 				if (!isHideInNav) {
 					MenuBean bean = new MenuBean(title, pagePath, pageLink, isCurrentPage, pageLevel);

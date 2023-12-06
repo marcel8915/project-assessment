@@ -1,5 +1,9 @@
 # AEM v6.5.19
 
+* Dispatcher configuration is inside the dispatcher folder.
+* Inside the screenshot folder, you can see some of this project screenshots.
+* Frontend have builded using the VueJS, SASS, Bootstrap, and FontAwesome for the icon.
+
 # Sample AEM project template
 
 This is a project template for AEM-based applications. It is intended as a best-practice set of examples as well as a potential starting point to develop your own functionality.
