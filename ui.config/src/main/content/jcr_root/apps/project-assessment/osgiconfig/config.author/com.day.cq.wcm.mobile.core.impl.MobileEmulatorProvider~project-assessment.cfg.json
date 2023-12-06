@@ -1,0 +1,6 @@
+{
+  "mobile.resourceTypes": [
+    "project-assessment/components/page"
+  ],
+  "README": "Indicate which page resource types should display the mobile emulators."
+}

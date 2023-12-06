@@ -1,0 +1,49 @@
+<sly data-sly-use.model="com.marcellius.singtel.core.models.HeaderMegaMenuModel">
+<div class="cmp-megamenu" data-cmp-is="megamenu">
+	<div class="cmp-megamenu__topnav content-container">
+		<div class="cmp-container">
+			<sly data-sly-resource="${'top-nav' @ resourceType='project-assessment/components/experiencefragment'}"/>
+		</div>
+	</div>
+	<div class="cmp-megamenu__nav content-container">
+		<div class="cmp-container">
+			<div class="cmp-megamenu__nav-logo">
+		    	<sly data-sly-resource="${'logo' @ resourceType='project-assessment/components/image'}"/>
+		   	</div>
+		   	<div class="cmp-megamenu__nav-menu">
+		   		<ul data-sly-list.menu="${model.menu}" class="cmp-megamenu__nav-menu--list">
+		   			<li class="cmp-megamenu__nav-menu--list-item">
+		   				<a class="cmp-megamenu__nav-menu--list-item-link title pb-2 ${menu.isCurrentPage ? 'active' : ''}" href="${menu.pageLink}">
+					        ${menu.title}
+					        <i class="fa-solid fa-house"></i>
+					    </a>
+					    <div data-sly-test="${menu.childMenu.size > 0}" class="cmp-megamenu__nav-submenu mt-2">
+					    	<div class="container">
+						    	<div data-sly-list.submenu="${menu.childMenu}" class="row">
+								    <div class="col">
+								      <ul>
+								      	<li class="mb-1">
+											<a class="cmp-megamenu__nav-menu--list-item-link title" href="${submenu.pageLink}">
+										        ${submenu.title}
+										    </a>
+										</li>
+								      	<li data-sly-repeat="${submenu.childMenu}">
+											<a class="cmp-megamenu__nav-menu--list-item-link" href="${item.pageLink}">
+										        ${item.title}
+										    </a>
+										</li>
+								      </ul>
+								    </div>
+							    </div>
+						    </div>
+					    </div>
+		   			</li>
+		   		</ul>
+		   	</div>
+		   	<div class="cmp-megamenu__nav-action">
+		   		<sly data-sly-resource="${'nav-action' @ resourceType='project-assessment/components/experiencefragment'}"/>
+		   	</div>
+	   	</div>
+   	</div>
+</div>
+</sly>
